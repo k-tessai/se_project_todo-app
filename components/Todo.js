@@ -26,6 +26,17 @@ class Todo {
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
   }
 
+  //   _dueDate() {
+  //     const dueDate = new Date(data.date);
+  //     if (!isNaN(dueDate)) {
+  //       todoDate.textContent = `Due: ${dueDate.toLocaleString("en-US", {
+  //         year: "numeric",
+  //         month: "short",
+  //         day: "numeric",
+  //       })}`;
+  //     }
+  //   } Tess check where this should go, not working here
+
   getView() {
     this._todoElement = this._templateElement.content
       .querySelector(".todo")
@@ -36,6 +47,8 @@ class Todo {
     this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
 
     todoNameEl.textContent = this._data.name;
+    // TO DO implement dates
+    // this._dueDate(); ??
 
     this._generateCheckboxEl();
 
