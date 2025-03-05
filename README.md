@@ -1,6 +1,6 @@
 # Simple Todo App
 
-The Todo App allows users to easily write their list of to-dos and "do" as many things as the need to.
+The Todo App allows users to easily write their list of to-dos and "do" as many things as they need to.
 
 ## Functionality
 
