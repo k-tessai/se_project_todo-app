@@ -14,4 +14,4 @@ Utilizing JavaScript to make the checkboxes responsive for the specific entry of
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+- [(https://k-tessai.github.io/se_project_todo-app)]
