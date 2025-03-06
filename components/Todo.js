@@ -56,6 +56,8 @@ class Todo {
 
     this._setEventListeners();
 
+    console.log("I was created", this._todoElement);
+
     return this._todoElement;
   }
 }

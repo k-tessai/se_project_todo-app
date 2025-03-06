@@ -1,10 +1,11 @@
+import FormValidator from "../components/FormValidator.js";
+
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 console.log(uuidv4());
 
 import { initialTodos } from "../utils/constants.js";
 import { validationConfig } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
-import FormValidator from "../components/FormValidator.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
@@ -76,10 +77,10 @@ addTodoForm.addEventListener("submit", (evt) => {
 
   const id = uuidv4();
   const values = { name, date, id };
-  const renderTodo = (item) => {
-    const todo = generateTodo(item);
-    todosList.append(todo);
-  };
+
+  const todo = generateTodo(values);
+  todosList.append(todo);
+
   closeModal(addTodoPopup);
 });
 
