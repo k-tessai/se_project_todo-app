@@ -76,7 +76,6 @@ addTodoForm.addEventListener("submit", (evt) => {
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
   const todoData = { name: name, date: dateInput };
-  const todoElement = generateTodo(todoData);
 
   // Create a date object and adjust for timezone
   const date = new Date(dateInput);
