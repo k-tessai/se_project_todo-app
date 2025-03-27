@@ -20,6 +20,8 @@ const addTodoPopup = new PopupWithForm({
   handleFormSubmit: () => {},
 });
 
+addTodoPopup.setEventListeners();
+
 const section = new Section({
   items: initialTodos, //pass initial todos
   renderer: (todoItem) => {
@@ -35,20 +37,16 @@ const section = new Section({
 
 section.renderItems();
 
-const openModal = (modal) => {
-  modal.classList.add("popup_visible");
-};
+// const openModal = (modal) => {
+//   modal.classList.add("popup_visible");
+// };
 
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
+// const closeModal = (modal) => {
+//   modal.classList.remove("popup_visible");
+// };
 
 addTodoButton.addEventListener("click", () => {
-  openModal(addTodoPopupEl);
-});
-
-addTodoCloseBtn.addEventListener("click", () => {
-  closeModal(addTodoPopupEl);
+  addTodoPopup.open();
 });
 
 function renderTodo(item) {
@@ -72,7 +70,7 @@ addTodoForm.addEventListener("submit", (evt) => {
   const todoElement = todo.getView();
   section.addItem(todoElement);
 
-  closeModal(addTodoPopupEl);
+  addTodoPopup.close();
 });
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
