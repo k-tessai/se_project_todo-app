@@ -17,7 +17,26 @@ const todosList = document.querySelector(".todos__list");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: () => {},
+  handleFormSubmit: (inputValues) => {
+    const name = inputValues.name;
+    const dateInput = inputValues.date;
+
+    const date = new Date(dateInput);
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+
+    const id = uuidv4();
+    const values = { name, date, id };
+
+    const todo = new Todo(values, "#todo-template");
+    const todoElement = todo.getView();
+    section.addItem(todoElement);
+
+    //addTodoFormValidator.resetValidation();
+    const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
+    newTodoValidator.enableValidation();
+
+    addTodoPopup.close();
+  },
 });
 
 addTodoPopup.setEventListeners();
@@ -47,23 +66,26 @@ function renderTodo(item) {
   todosList.append(todo);
 }
 
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
+// addTodoForm.addEventListener("submit", (evt) => {
+//   evt.preventDefault();
 
-  const date = new Date(dateInput);
-  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+//   const name = evt.target.name.value;
+//   const dateInput = evt.target.date.value;
 
-  const id = uuidv4();
-  const values = { name, date, id };
+//   const date = new Date(dateInput);
+//   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
-  const todo = new Todo(values, "#todo-template");
-  const todoElement = todo.getView();
-  section.addItem(todoElement);
+//   const id = uuidv4();
+//   const values = { name, date, id };
 
-  addTodoPopup.close();
-});
+//   const todo = new Todo(values, "#todo-template");
+//   const todoElement = todo.getView();
+//   section.addItem(todoElement);
 
-const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
-newTodoValidator.enableValidation();
+// addTodoFormValidator.resetValidation();
+
+//   addTodoPopup.close();
+// });
+
+// const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
+// newTodoValidator.enableValidation();
